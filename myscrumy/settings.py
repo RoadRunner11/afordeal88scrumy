@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'afordeal88scrumy.apps.Afordeal88ScrumyConfig',
+    'afordeal88scrumy.apps.Afordeal88ScrumyConfig',
 ]
 
 MIDDLEWARE = [
