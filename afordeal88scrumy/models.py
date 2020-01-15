@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 class GoalStatus(models.Model):
     status_name = models.CharField(max_length=30)
 
-class ScrumyGoal(models.Model):
+class ScrumyGoals(models.Model):
     goal_name = models.CharField(max_length=30)
     goal_id = models.IntegerField(default=30)
     created_by = models.CharField(max_length=30)
