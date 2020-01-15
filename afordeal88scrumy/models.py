@@ -24,4 +24,4 @@ class ScrumyHistory(models.Model):
     moved_from = models.CharField(max_length=30)
     moved_to = models.CharField(max_length=30)
     time_of_action = models.DateTimeField(auto_now= False, auto_now_add= False)
-    goal = models.ForeignKey(ScrumyGoal, on_delete= models.CASCADE)
+    goal = models.ForeignKey(ScrumyGoals, on_delete= models.CASCADE)
