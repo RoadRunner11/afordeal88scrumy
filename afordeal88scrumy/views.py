@@ -7,3 +7,6 @@ def index(request):
     for goal in goals:
         print(goal)
         return HttpResponse( goal )
+def move_goal(request, goal_id):
+    goal_name = ScrumyGoals.objects.get(goal_id = goal_id)
+    return HttpResponse(goal_name)
