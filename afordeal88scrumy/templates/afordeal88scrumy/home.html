@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Scrumy Chat</title>
+        <style>
+            table,
+            th,
+            td {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+        
+            th,
+            td {
+                padding: 5px;
+                text-align: left;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Weekly Goals</th>
+                        <th>Daily Goals</th>
+                        <th>Verify Goals</th>
+                        <th>Done Goals</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{user}}</td>
+                        <td>
+                            {{goal_name}}<br>
+                            {{goal_id}}
+                        </td>
+                        <td>
+                            {{day.goal_name}} <br>
+                        </td>
+                        <td>
+                            {{ver.goal_name}} <br>
+                        </td>
+                        <td>
+                            {{don.goal_name}} <br>
+                        </td>
+                        
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

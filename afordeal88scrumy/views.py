@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse 
 from .models import User, ScrumyGoals, ScrumyHistory, GoalStatus
+from django.core.exceptions import ObjectDoesNotExist
 import random
 # Create your views here.
 def index(request):
@@ -10,8 +11,13 @@ def index(request):
         return HttpResponse( goal )
 
 def move_goal(request, goal_id):
-    goal_name = ScrumyGoals.objects.get(goal_id = goal_id)
-    return HttpResponse(goal_name)
+    error ='A record with that goal id does not exist'
+    try:
+        obj = ScrumyGoals.objects.get(goal_id=goal_id)
+    except ScrumyGoals.DoesNotExist:
+        return render(request, 'afordeal88scrumy/exception.html', {'error': error}) 
+    else: 
+        return HttpResponse(obj.goal_name)
 
 def add_goal(request):
     user = User.objects.get(username='louis')
@@ -22,8 +28,17 @@ def add_goal(request):
 
 def home(request):
     goals = ScrumyGoals.objects.filter(goal_name='Keep Learning Django')
+    scrumg = ScrumyGoals.objects.get(goal_name="Learn Django")
+    user = scrumg.user
+    goal_id = scrumg.goal_id
+    goal_name = scrumg.goal_name
+    context = {
+        'user':user,
+        'goal_id':goal_id,
+        'goal_name':goal_name,       
+    }
     output = ', '.join([goal.goal_name for goal in goals])
-    return HttpResponse(output)
+    return render(request, "afordeal88scrumy/home.html", context)
 
 def gen_id():
         id_list = ScrumyGoals.objects.all()
