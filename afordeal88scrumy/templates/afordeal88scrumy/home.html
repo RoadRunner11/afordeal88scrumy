@@ -1,8 +1,26 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
+    
     <head>
-        <title>My Scrumy Chat</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>My Chatscrum</title>
         <style>
+    
+            body {
+            /* color: gainsboro; */
+            background-color: rgb(236, 235, 235);
+            }
+            table{
+                width: 50%;
+                height: 100px;
+                margin:50px auto;
+                font-size: large;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                
+            }
             table,
             th,
             td {
@@ -14,13 +32,23 @@
             td {
                 padding: 5px;
                 text-align: left;
+                
+            }
+            thead{
+                background-color: cadetblue;
+            }
+            li.addgoal{
+                font-size: x-large;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                font-weight: bold;
             }
         </style>
     </head>
     <body>
+        <li class="addgoal"><a href="{% url 'add goal' %}"> Visit the Add Goal page </a></li><br>
         <div>
             <table>
-                <thead>
+                <thead class="head">
                     <tr>
                         <th>User</th>
                         <th>Weekly Goals</th>
@@ -30,25 +58,49 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>{{user}}</td>
+                   {%for user in users%} 
+                    <tr>                     
+                        <td>                           
+                            {{user}}<br><br><br>
+                        </td>                       
                         <td>
-                            {{goal_name}}<br>
-                            {{goal_id}}
+                            {%for week in weekly%}
+                            {% if user == week.user%}
+                            {{week.goal_name}}<br>
+                            {{week.goal_id}}<br><br>
+                            {%endif%}
+                            {%endfor%}
                         </td>
                         <td>
+                            {%for day in daily%}
+                            {% if user == day.user%}
                             {{day.goal_name}} <br>
+                            {{day.goal_id}} <br><br>
+                            {%endif%}
+                            {%endfor%}
                         </td>
                         <td>
+                            {%for ver in verify%}
+                            {% if user == ver.user%}
                             {{ver.goal_name}} <br>
+                            {{ver.goal_id}}  <br> <br>
+                            {%endif%}
+                            {%endfor%}
                         </td>
                         <td>
+                            {%for don in done%}
+                            {% if user == don.user%}
                             {{don.goal_name}} <br>
+                            {{don.goal_id}}<br><br>
+                            {%endif%}
+                            {%endfor%}
                         </td>
                         
                     </tr>
+                    {%endfor%}
                 </tbody>
             </table>
         </div>
     </body>
+    
 </html>

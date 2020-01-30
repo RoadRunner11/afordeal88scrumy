@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+    <style>
+        body{
+            color: gainsboro;
+            background-color: rgb(236, 235, 235);
+        }
+        div{
+            width: 30%;
+            height: 200px;
+            border: 3px solid;
+            background-color:cadetblue ;
+            padding: 100px;
+            margin: 100px auto;
+        }
+        input.one{
+            width: 500px;
+            height: 30px;
+        }
+        input.two{
+            background-color: brown;
+            color: aliceblue;
+            width: 100px;
+            height: 50px;
+            margin-left: 120px;
+            margin-top: 20px;
+            border-radius: 5px;
+            border: none;
+            font-size: x-large;
+        }
+        label{
+            margin-top: 80px;
+            font-size: 30px;
+        }
+        li.index{
+            font-size: 30px;
+            font-style: oblique;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+    </style>
+</head>
+<body>
+    <li class="index"><a href="{% url 'index' %}"> Visit the Index page </a></li>
+    <div class="forrm">
+    <form method="POST">
+        {% csrf_token %}
+        <label id="user">Username:</label>  <br><br>
+        <input class="one" type="text" name="username"><br><br>
+        <label id="pass">Password:</label>  <br><br>
+        <input class="one" type="password" name="password"><br>
+        <input class="two" type="submit" name="submit" value="Submit">
+
+    </form> 
+    </div>
+
+    {% if form.errors %}
+    <p>Invalid login credentials</p>
+    {% endif %}    
+</body>
+</html>
+

@@ -4,25 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Error</title>
+    <title>Account Created</title>
     <style>
-        body {
-            color: gainsboro;
+        body{
+            color: black;
             background-color: rgb(236, 235, 235);
-        }
-        p{
-            text-align: center;
-            position: absolute;
+            font-size: 30px;
             font-family: Georgia, 'Times New Roman', Times, serif;
-            /* margin-left: 200px; */
-            font-size: xx-large;
-            color: #000;
+        
         }
     </style>
 </head>
 <body>
-    <p><b>{{error}}</b>  </p> 
+    <h2>Your account has been successfully created</h2>
+    <div><a href="{% url 'login' %}">Click here to login</a></div>
 </body>
 </html>
-       
-

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add New Goal</title>
+    <style>
+        body {
+            color: gainsboro;
+            background-color: rgb(236, 235, 235);
+        }
+        h2{
+            color: brown;
+            font-family: sans-serif;
+        }
+        div{
+            width: 30%;
+            height: 300px;
+            border: 3px solid;
+            background-color:cadetblue ;
+            padding: 50px;
+            margin: 40px auto;
+            font-size: 30px;
+        }
+        .one{
+            background-color: brown;
+            color: aliceblue;
+            width: 200px;
+            height: 50px;
+            margin-left: 120px;
+            /* margin-top: 20px; */
+            border-radius: 5px;
+            border: none;
+            font-size: x-large;
+        }
+        input{
+            width:300px; 
+            height:30px;
+        }
+        select{
+            width:300px; 
+            height:30px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Add a New Goal</h2>
+    <div>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ goal_form.as_p }}
+        <input class="one" type="submit" name="submit" value="Add Goal">
+    </form>   
+    </div>
+ 
+</body>
+</html>

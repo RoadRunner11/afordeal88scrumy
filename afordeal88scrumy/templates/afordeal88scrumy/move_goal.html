@@ -1,0 +1,42 @@
+<form action="" method="POST">
+    {%csrf_token%}
+    {{ move_form.as_p }}
+    <!-- {% if current_user in users_in_dev %} -->
+
+    <!-- Move to <br><br>
+    <input type="radio" name="goal" value="Weekly Goals">Weekly Goals <br>
+    <input type="radio" name="goal" value="Daily Goals">Daily Goals <br>
+    <input type="radio" name="goal" value="Verify Goals">Verify Goals <br>
+    <br>
+    <input type="submit" name="submit" value="Move Goal"> -->
+
+    <!-- {% elif current_user in users_in_QA %} -->
+    <!-- Move to<br><br>
+    <input type="radio" name="goal" value="Weekly Goals">Weekly Goals <br>
+    <input type="radio" name="goal" value="Daily Goals">Daily Goals <br>
+    <input type="radio" name="goal" value="Verify Goals"> Verify Goals <br>
+    <input type="radio" name="goal" value="Done Goals"> Done Goals <br>
+    <input type="submit" name="submit" value="Move Goal"> -->
+
+    <!-- {% elif current_user in users_in_adm %} -->
+    <!-- Move to<br><br>
+    <input type="radio" name="goal" value="Weekly Goals">Weekly Goals <br>
+    <input type="radio" name="goal" value="Daily Goals">Daily Goals <br>
+    <input type="radio" name="goal" value="Verify Goals"> Verify Goals <br>
+    <input type="radio" name="goal" value="Done Goals"> Done Goals <br>
+    <br>
+    <input type="submit" name="submit" value="Move Goal"> -->
+
+    <!-- {% elif current_user in users_in_own %} -->
+    <!-- Move to<br> <br>
+    <input type="radio" name="goal" value="Weekly Goals">Weekly Goals <br>
+    <input type="radio" name="goal" value="Daily Goals">Daily Goals <br>
+    <input type="radio" name="goal" value="Verify Goals"> Verify Goals <br>
+    <input type="radio" name="goal" value="Done Goals"> Done Goals <br>
+    <input type="submit" name="submit" value="Move Goal"> -->
+
+
+    <!-- {%endif%} -->
+    <input type="submit" name="submit" value="Move Goal">
+
+</form>
