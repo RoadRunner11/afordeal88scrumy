@@ -6,7 +6,7 @@ class GoalStatus(models.Model):
     def __str__(self):
         return self.status_name
 class ScrumyGoals(models.Model):
-    goal_name = models.CharField(max_length=30)
+    goal_name = models.CharField(max_length=255)
     goal_id = models.IntegerField(default=30)
     created_by = models.CharField(max_length=30)
     moved_by = models.CharField(max_length=30)
