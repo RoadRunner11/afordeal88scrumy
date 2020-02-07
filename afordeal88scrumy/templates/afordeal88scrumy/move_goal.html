@@ -1,42 +1,106 @@
-<form action="" method="POST">
-    {%csrf_token%}
-    {{ move_form.as_p }}
-    <!-- {% if current_user in users_in_dev %} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Move Goal</title>
+    <style>
+        body {
+            color: gainsboro;
+            background-color: rgb(236, 235, 235);
+        }
+        div#formm{
+            width: 20%;
+            height: 200px;
+            border: 3px solid;
+            background-color:cadetblue ;
+            padding: 60px;
+            margin: 40px auto;
+            font-size: large;
+        }
+        .one{
+            background-color: brown;
+            color: aliceblue;
+            width: 120px;
+            height: 50px;
+            margin-left: 10%;
+            /* margin-top: 20px; */
+            border-radius: 5px;
+            border: none;
+            font-size: large;
+        }
+        select{
+        width:80%; 
+        height:30px;
+        }
+        div#head{
+            width: 100%;
+            height: 80px;
+            color: antiquewhite;
+            background-color: cadetblue;
+        }
+        .messages{
+            color: brown;
+        }
+    </style>
 
-    <!-- Move to <br><br>
-    <input type="radio" name="goal" value="Weekly Goals">Weekly Goals <br>
-    <input type="radio" name="goal" value="Daily Goals">Daily Goals <br>
-    <input type="radio" name="goal" value="Verify Goals">Verify Goals <br>
-    <br>
-    <input type="submit" name="submit" value="Move Goal"> -->
+</head>
 
-    <!-- {% elif current_user in users_in_QA %} -->
-    <!-- Move to<br><br>
-    <input type="radio" name="goal" value="Weekly Goals">Weekly Goals <br>
-    <input type="radio" name="goal" value="Daily Goals">Daily Goals <br>
-    <input type="radio" name="goal" value="Verify Goals"> Verify Goals <br>
-    <input type="radio" name="goal" value="Done Goals"> Done Goals <br>
-    <input type="submit" name="submit" value="Move Goal"> -->
-
-    <!-- {% elif current_user in users_in_adm %} -->
-    <!-- Move to<br><br>
-    <input type="radio" name="goal" value="Weekly Goals">Weekly Goals <br>
-    <input type="radio" name="goal" value="Daily Goals">Daily Goals <br>
-    <input type="radio" name="goal" value="Verify Goals"> Verify Goals <br>
-    <input type="radio" name="goal" value="Done Goals"> Done Goals <br>
-    <br>
-    <input type="submit" name="submit" value="Move Goal"> -->
-
-    <!-- {% elif current_user in users_in_own %} -->
-    <!-- Move to<br> <br>
-    <input type="radio" name="goal" value="Weekly Goals">Weekly Goals <br>
-    <input type="radio" name="goal" value="Daily Goals">Daily Goals <br>
-    <input type="radio" name="goal" value="Verify Goals"> Verify Goals <br>
-    <input type="radio" name="goal" value="Done Goals"> Done Goals <br>
-    <input type="submit" name="submit" value="Move Goal"> -->
-
-
-    <!-- {%endif%} -->
-    <input type="submit" name="submit" value="Move Goal">
-
-</form>
+<body>
+    <div id='head'>
+        <h1>
+            Move Goal
+        </h1>
+    </div>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tages %} class="{{message.tags}}" {%endif%}>{{message}} <a href="{% url 'home' %}">Go Home</a> </li>
+        {%endfor%}    
+    </ul>    
+    {%endif%}
+    
+    <div id="formm">
+    <form action="" method="POST">
+        {%csrf_token%}
+        {{ move_form.as_p }}
+        <input class="one" type="submit" name="submit" value="Move Goal">
+        <!-- {% if current_user in users_in_dev %} -->
+    
+        <!-- Move to <br><br>
+        <input type="radio" name="goal" value="Weekly Goals">Weekly Goals <br>
+        <input type="radio" name="goal" value="Daily Goals">Daily Goals <br>
+        <input type="radio" name="goal" value="Verify Goals">Verify Goals <br>
+        <br>
+        <input type="submit" name="submit" value="Move Goal"> -->
+    
+        <!-- {% elif current_user in users_in_QA %} -->
+        <!-- Move to<br><br>
+        <input type="radio" name="goal" value="Weekly Goals">Weekly Goals <br>
+        <input type="radio" name="goal" value="Daily Goals">Daily Goals <br>
+        <input type="radio" name="goal" value="Verify Goals"> Verify Goals <br>
+        <input type="radio" name="goal" value="Done Goals"> Done Goals <br>
+        <input type="submit" name="submit" value="Move Goal"> -->
+    
+        <!-- {% elif current_user in users_in_adm %} -->
+        <!-- Move to<br><br>
+        <input type="radio" name="goal" value="Weekly Goals">Weekly Goals <br>
+        <input type="radio" name="goal" value="Daily Goals">Daily Goals <br>
+        <input type="radio" name="goal" value="Verify Goals"> Verify Goals <br>
+        <input type="radio" name="goal" value="Done Goals"> Done Goals <br>
+        <br>
+        <input type="submit" name="submit" value="Move Goal"> -->
+    
+        <!-- {% elif current_user in users_in_own %} -->
+        <!-- Move to<br> <br>
+        <input type="radio" name="goal" value="Weekly Goals">Weekly Goals <br>
+        <input type="radio" name="goal" value="Daily Goals">Daily Goals <br>
+        <input type="radio" name="goal" value="Verify Goals"> Verify Goals <br>
+        <input type="radio" name="goal" value="Done Goals"> Done Goals <br>
+        <input type="submit" name="submit" value="Move Goal"> -->
+        <!-- {%endif%} -->
+    </form>
+    </div>
+</body>
+</html>

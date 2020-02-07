@@ -38,14 +38,40 @@
                 background-color: cadetblue;
             }
             li.addgoal{
-                font-size: x-large;
+                font-size: large;
                 font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
                 font-weight: bold;
+                color: brown;
+            }
+            div#head{
+                width: 100%;
+                height: 120px;
+                color: antiquewhite;
+                background-color: cadetblue;
+            }
+            a{
+                color: brown;
+                font-size: large;
+            }
+            .logt{
+                
             }
         </style>
     </head>
     <body>
-        <li class="addgoal"><a href="{% url 'add goal' %}"> Visit the Add Goal page </a></li><br>
+        <div id = 'head'>
+         <h2>Welcome {{current_user}},
+            {%if current_user.username == 'louis'%} You are the Super Admin
+            {%else%}
+            you're a/an {{group}}
+            {%endif%}
+        </h2> 
+        <li class="addgoal"><a href="{% url 'add goal' %}"> Visit here to add Goals </a></li><br>  
+        {% if current_user.is_authenticated %}
+            <a class="logt" href="{% url 'logout' %}">logout</a>
+        {%endif%}
+        </div>
+        
         <div>
             <table>
                 <thead class="head">
@@ -67,7 +93,7 @@
                             {%for week in weekly%}
                             {% if user == week.user%}
                             {{week.goal_name}}<br>
-                            {{week.goal_id}}<br><br>
+                            <a href="{% url 'move goal' week.goal_id %}">{{week.goal_id}} </a><br><br>
                             {%endif%}
                             {%endfor%}
                         </td>
@@ -75,7 +101,7 @@
                             {%for day in daily%}
                             {% if user == day.user%}
                             {{day.goal_name}} <br>
-                            {{day.goal_id}} <br><br>
+                            <a href="{% url 'move goal' day.goal_id %}">{{day.goal_id}} </a><br><br>
                             {%endif%}
                             {%endfor%}
                         </td>
@@ -83,7 +109,7 @@
                             {%for ver in verify%}
                             {% if user == ver.user%}
                             {{ver.goal_name}} <br>
-                            {{ver.goal_id}}  <br> <br>
+                            <a href="{% url 'move goal' ver.goal_id %}">{{ver.goal_id}} </a>  <br> <br>
                             {%endif%}
                             {%endfor%}
                         </td>
@@ -91,7 +117,7 @@
                             {%for don in done%}
                             {% if user == don.user%}
                             {{don.goal_name}} <br>
-                            {{don.goal_id}}<br><br>
+                            <a href="{% url 'move goal' don.goal_id %}">{{don.goal_id}} </a><br><br>
                             {%endif%}
                             {%endfor%}
                         </td>

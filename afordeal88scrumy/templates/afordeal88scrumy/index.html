@@ -40,7 +40,7 @@
         input#id_password{
             
         }
-
+        
 
 
     </style>
@@ -52,7 +52,8 @@
     <h3 class="sign">Sign Up</h3 class=sign>
         {{ form.as_p }}
     
-    <input class="two" type="submit" name="submit" value="Register User"> 
+    <span><input class="two" type="submit" name="submit" value="Register User"> 
+    <p>Already have an account? Log in <a href="{% url 'login' %}">here</a></p></span>
 
     </form>
     </div> 

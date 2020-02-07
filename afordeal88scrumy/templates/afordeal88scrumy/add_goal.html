@@ -42,10 +42,20 @@
             width:80%; 
             height:30px;
         }
+        .messages{
+            color: brown;
+        }
     </style>
 </head>
 <body>
     <h2>Add a New Goal</h2>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tages %} class="{{message.tags}}" {%endif%}>{{message}}  <a href="{% url 'home' %}">Go Home</a></li>
+            {%endfor%}
+        </ul>
+        {%endif%}
     <div>
     <form action="" method="POST">
         {% csrf_token %}

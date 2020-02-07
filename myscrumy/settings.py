@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'afordeal88scrumy.apps.Afordeal88ScrumyConfig',
+    'websocket.apps.WebsocketConfig',
 ]
 
 MIDDLEWARE = [
@@ -128,3 +129,4 @@ MEDIA_URL = '/media/'
 
 STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL= 'home'
+LOGOUT_REDIRECT_URL = 'login'
