@@ -145,8 +145,8 @@ def add_goal(request):
             users_in_QA = Group.objects.get(name="Quality Assurance").user_set.all()
             users_in_adm = Group.objects.get(name="Admin").user_set.all()
             users_in_own = Group.objects.get(name="Owner").user_set.all()
-            print(current_user)
-            print(cd['user'])
+            # print(current_user)
+            # print(cd['user'])
             if current_user in users_in_dev and current_user != cd['user']:
                 # return HttpResponse('<span style="background-color:red;color:white;padding:10px;">Access restricted, as a Dev,\
                 #         You can only create weekly goal for yourself</span>')
@@ -203,8 +203,8 @@ def home(request):
     done = done.scrumygoals_set.all()
     current_user = request.user
     group = None
-    print(current_user=='louis')
-    print(current_user.username)
+    # print(current_user=='louis')
+    # print(current_user.username)
     if current_user.username == 'louis':
         group = group
     else:
