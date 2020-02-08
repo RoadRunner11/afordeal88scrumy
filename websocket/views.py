@@ -26,7 +26,7 @@ def disconnect(request):
 def _send_to_connection(connection_id, data):
     gatewayapi = boto3.client('apigatewaymanagementapi', 
     endpoint_url= "https://fh7hhc2pn0.execute-api.us-east-2.amazonaws.com/Test/@connections",
-    region_name='us-east-2',
+    region_name='us-west-2',
     aws_access_key_id='',
     aws_secret_access_key= '')
     return gatewayapi.post_to_connection(ConnectionId=connection_id, Data=json.dumps(data).encode('utf-8'))
