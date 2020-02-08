@@ -17,6 +17,7 @@ def connect(request):
     connection_id = body['connectionId']
     Connection.objects.create(connection_id=connection_id)
     return JsonResponse('connect successfully', status=200)
+@csrf_exempt
 def disconnect(request):
     body = _parse_body(request.body)
     connection_id = body['connectionId']
@@ -30,7 +31,7 @@ def _send_to_connection(connection_id, data):
     aws_access_key_id='',
     aws_secret_access_key= '')
     return gatewayapi.post_to_connection(ConnectionId=connection_id, Data=json.dumps(data).encode('utf-8'))
-
+@csrf_exempt
 def send_message(request):
     body = _parse_body(request.body) 
     connections = ChatMessage.object.create(username=body['username'], message=body['message'], timestamp=body['timestamp'])
@@ -38,7 +39,7 @@ def send_message(request):
     for connection in connections:
         _send_to_connection(body['connectionId'], data)
     return JsonResponse('successfully sent', status=200)
-
+@csrf_exempt
 def get_recent_messages(request):
     body = _parse_body(request.body)
     connections = ChatMessage.objects.all()
