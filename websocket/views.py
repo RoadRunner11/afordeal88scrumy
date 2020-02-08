@@ -3,6 +3,7 @@ from .models import ChatMessage, Connection
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+import boto3
 # Create your views here.
 @csrf_exempt
 def test(request):
@@ -21,4 +22,18 @@ def disconnect(request):
     connection_id = body['connectionId']
     Connection.objects.delete(connection_id=connection_id)
     return JsonResponse('disconnect successfully', status=200)
-    
+def _send_to_connection(connection_id, data):
+    gatewayapi = boto3.client(‘apigatewaymanagementapi’, 
+    endpoint_url="https://fh7hhc2pn0.execute-api.us-east-2.amazonaws.com/Test/@connections",
+    region_name='us-east-2',
+    aws_access_key_id='AKIAJBX23G4BTBN637RQ',
+    aws_secret_access_key= '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')
+    return gatewayapi.post_to_connection(ConnectionId=connection_id, Data=json.dumps(data).encode('utf-8')
+
+def send_message(request):
+    body = _parse_body(request.body) 
+    connections = ChatMessage.object.create(username=body['username'], message=body['message'], timestamp=body['timestamp'])
+    data = {'messages':[body]}
+    for connection in connections:
+        _send_to_connection(body['connectionId'], data)
+    return JsonResponse('successfully sent', status=200)
