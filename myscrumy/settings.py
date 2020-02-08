@@ -130,3 +130,4 @@ MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL= 'home'
 LOGOUT_REDIRECT_URL = 'login'
+APPEND_SLASH=False
