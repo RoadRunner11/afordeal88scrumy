@@ -17,13 +17,13 @@ def connect(request):
     body = _parse_body(request.body)
     connection_id = body['connectionId']
     Connection.objects.create(connection_id=connection_id)
-    return JsonResponse('connect successfully', status=200)
+    return JsonResponse('connect successfully', status=200, safe=False)
 @csrf_exempt
 def disconnect(request):
     body = _parse_body(request.body)
     connection_id = body['connectionId']
     Connection.objects.delete(connection_id=connection_id)
-    return JsonResponse('disconnect successfully', status=200)
+    return JsonResponse('disconnect successfully', status=200, safe=False)
 
 def _send_to_connection(connection_id, data):
     gatewayapi = boto3.client('apigatewaymanagementapi', 
@@ -39,7 +39,7 @@ def send_message(request):
     data = {'messages':[body]}
     for connection in connections:
         _send_to_connection(body['connectionId'], data)
-    return JsonResponse('successfully sent', status=200)
+    return JsonResponse('successfully sent', status=200, safe=False)
 @csrf_exempt
 def get_recent_messages(request):
     body = _parse_body(request.body)
