@@ -32,7 +32,7 @@ def disconnect(request):
 
 def _send_to_connection(connection_id, data):
     gatewayapi = boto3.client('apigatewaymanagementapi', 
-    endpoint_url= "https://fh7hhc2pn0.execute-api.us-east-2.amazonaws.com/Test/@connections",
+    endpoint_url= "https://gr3cwo64fb.execute-api.us-west-2.amazonaws.com/Test/@connections",
     region_name='us-west-2',
     aws_access_key_id='',
     aws_secret_access_key= '')
@@ -44,7 +44,7 @@ def send_message(request):
     connections = [i.connection_id for i in Connection.objects.all()]
     data = {'messages':[body]}
     for connection in connections:
-        _send_to_connection(connection, data)
+        _send_to_connection(connection], data)
     return JsonResponse('successfully sent', status=200, safe=False)
 @csrf_exempt
 def get_recent_messages(request):
