@@ -17,7 +17,12 @@ def connect(request):
     body = _parse_body(request.body)
     connection_id = body['connectionId']
     Connection.objects.create(connection_id=connection_id)
-    return JsonResponse('connect successfully', status=200, safe=False)
+    response = {
+        "statusCode": 200,
+        "body": "Connecte succesfully"
+    }
+    return response
+    # return JsonResponse('connect successfully', status=200, safe=False)
 @csrf_exempt
 def disconnect(request):
     body = _parse_body(request.body)
