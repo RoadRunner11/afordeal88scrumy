@@ -44,7 +44,7 @@ def send_message(request):
     connections = [i.connection_id for i in Connection.objects.all()]
     data = {'messages':[body]}
     for connection in connections:
-        _send_to_connection(body[connection], data)
+        _send_to_connection(connection, data)
     return JsonResponse('successfully sent', status=200, safe=False)
 @csrf_exempt
 def get_recent_messages(request):
