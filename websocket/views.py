@@ -21,8 +21,8 @@ def connect(request):
         "statusCode": 200,
         "body": "Connecte succesfully"
     }
-    return response
-    # return JsonResponse('connect successfully', status=200, safe=False)
+    # return response
+    return JsonResponse('connect successfully', status=200, safe=False)
 @csrf_exempt
 def disconnect(request):
     body = _parse_body(request.body)
