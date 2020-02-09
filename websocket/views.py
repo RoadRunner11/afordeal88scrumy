@@ -32,7 +32,7 @@ def disconnect(request):
 
 def _send_to_connection(connection_id, data):
     gatewayapi = boto3.client('apigatewaymanagementapi', 
-    endpoint_url= "https://gr3cwo64fb.execute-api.us-west-2.amazonaws.com/Test/@connections",
+    endpoint_url= "https://gr3cwo64fb.execute-api.us-west-2.amazonaws.com/Test/",
     region_name='us-west-2',
     aws_access_key_id='',
     aws_secret_access_key= '')
