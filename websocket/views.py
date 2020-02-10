@@ -52,7 +52,8 @@ def get_recent_messages(request):
     body = _parse_body(request.body)
     connectionId = body['connectionId']
     connection_id = Connection.objects.get(connection_id=connectionId).connection_id
-    messages = ChatMessage.objects.all().reverse()
+    messages = ChatMessage.objects.all()
+    messages.reverse()
     if len(messages) > 5:
         data = {'messages':[{'username':chat_message.username, 'message':chat_message.message,
         'timestamp':chat_message.timestamp} for chat_message in messages[:5]]}
