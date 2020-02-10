@@ -49,7 +49,8 @@ def send_message(request):
 @csrf_exempt
 def get_recent_messages(request):
     body = _parse_body(request.body)
-    connection_id = body['connectionId']
+    connectionId = body['connectionId']
+    connection_id = Connection.objects.get(connection_id=connectionId)
     messages = ChatMessage.objects.all()
     data = {'messages':[{'username':connection.username, 'message':connection.message,
     'timestamp':connection.timestamp} for message in messages]}
