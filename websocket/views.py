@@ -55,6 +55,6 @@ def get_recent_messages(request):
     data = {'messages':[{'username':chat_message.username, 'message':chat_message.message,
     'timestamp':chat_message.timestamp} for chat_message in messages]}
     _send_to_connection(connection_id, data )
-    return JsonResponse('successfully sent', status=200)
+    return JsonResponse('successfully sent', status=200, safe=False)
 
 
